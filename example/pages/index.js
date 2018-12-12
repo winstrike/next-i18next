@@ -1,4 +1,5 @@
 import React from 'react'
+import { Trans } from 'react-i18next'
 import { i18n, Link, withNamespaces } from '../i18n'
 
 import Title from '../components/Title'
@@ -10,6 +11,13 @@ class Homepage extends React.Component {
     return (
       <React.Fragment>
         <Title />
+
+        {/* Works... */}
+        <Trans i18n={i18n} i18nKey='h1' />
+
+        {/* Does not work unless i18n is explicitly passed in */}
+        {/* <Trans i18nKey='h1' /> */}
+
         <button onClick={() => i18n.changeLanguage(i18n.language === 'en' ? 'de' : 'en')}>
           {t('change-locale')}
         </button>
