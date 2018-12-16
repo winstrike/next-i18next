@@ -1,7 +1,7 @@
 import React from 'react'
 import Router from 'next/router'
 
-import reactTreeWalker from 'react-tree-walker'
+// import reactTreeWalker from 'react-tree-walker'
 
 import { I18nextProvider } from 'react-i18next'
 import { lngPathCorrector } from 'utils'
@@ -69,21 +69,22 @@ export default function (WrappedComponent) {
       }
 
       // Step 2: Determine namespace dependencies
+      console.log('---------- getInitialProps ----------') // eslint-disable-line
 
       // Create stripped-down version of incoming tree to
       // walk and check props for NamespacesConsumer
-      const tree = (<I18nextProvider i18n={i18n}><Component {...this.props} /></I18nextProvider>)
-      let nsFromTree = []
+      // const tree = (<I18nextProvider i18n={i18n}><Component {...this.props} /></I18nextProvider>)
+      const nsFromTree = []
 
       // Walk tree and determine namespaces necessary to
       // render this specific component tree
-      if (process.env.NODE_ENV === 'production') {
-        await reactTreeWalker(tree, (element, instance) => {
-          if (instance && instance.props && instance.props.ns) {
-            nsFromTree = [...new Set(nsFromTree.concat(instance.props.ns))]
-          }
-        }, {})
-      }
+      // if (process.env.NODE_ENV === 'production') {
+      //   await reactTreeWalker(tree, (element, instance) => {
+      //     if (instance && instance.props && instance.props.ns) {
+      //       nsFromTree = [...new Set(nsFromTree.concat(instance.props.ns))]
+      //     }
+      //   }, {})
+      // }
 
       // Step 3: Perform data fetching, depending on environment
       if (req && req.i18n) {
