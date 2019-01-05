@@ -144,6 +144,6 @@ export default function (WrappedComponent) {
     }
   }
 
-  return hoistNonReactStatics(AppWithTranslation, WrappedComponent, { getInitialProps: true })
+  return hoistNonReactStatics(AppWithTranslation, WrappedComponent)
 
 }
