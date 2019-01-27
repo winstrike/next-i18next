@@ -1,3 +1,5 @@
+import NextI18Next from "..";
+
 const DEFAULT_LANGUAGE = 'en'
 const OTHER_LANGUAGES = []
 const DEFAULT_NAMESPACE = 'common'
@@ -5,7 +7,17 @@ const LOCALE_PATH = 'static/locales'
 const LOCALE_STRUCTURE = '{{lng}}/{{ns}}'
 const LOCALE_SUBPATHS = false
 
-export default {
+export interface NextI18NextConfig {
+  defaultLanguage: string;
+  otherLanguages: string[];
+  fallbackLng: string | null;
+  load: string;
+  localePath: string;
+  localeStructure: string;
+  ns: string[];
+}
+
+export const defaultConfig = <NextI18NextConfig> {
   defaultLanguage: DEFAULT_LANGUAGE,
   otherLanguages: OTHER_LANGUAGES,
   fallbackLng: process.env.NODE_ENV === 'production' ? DEFAULT_LANGUAGE : null,

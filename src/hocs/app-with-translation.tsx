@@ -1,24 +1,24 @@
-import React from 'react'
+import * as React from 'react'
 import { withRouter } from 'next/router'
 
-import { I18nextProvider } from 'react-i18next'
-import { lngFromReq, lngPathCorrector } from 'utils'
-import { NextStaticProvider } from 'components'
-
 import hoistNonReactStatics from 'hoist-non-react-statics'
+import { I18nextProvider } from 'react-i18next'
 
-export default function (WrappedComponent) {
+import { lngFromReq, lngPathCorrector } from '../utils/index'
+import { NextStaticProvider } from '../components/index'
+
+export function appWithTranslation(WrappedComponent) {
 
   const { config, consoleMessage, i18n } = this
 
-  class AppWithTranslation extends React.Component {
+  class AppWithTranslation extends React.Component<{}> {
 
     constructor(props) {
       super(props)
 
       if (config.localeSubpaths) {
         i18n.on('languageChanged', (lng) => {
-          if (process.browser) {
+          if (typeof window !== 'undefined') {
             const { router } = props
             const { pathname, asPath, query: routerQuery } = router
             const [as, query] = lngPathCorrector(config, i18n, { asPath, query: routerQuery }, lng)
@@ -32,7 +32,11 @@ export default function (WrappedComponent) {
 
     static async getInitialProps(ctx) {
 
-      let wrappedComponentProps = { pageProps: {} }
+      let wrappedComponentProps = {
+        pageProps: {
+          namespacesRequired: null,
+        }
+      }
       if (WrappedComponent.getInitialProps) {
         wrappedComponentProps = await WrappedComponent.getInitialProps(ctx)
       }
@@ -129,7 +133,7 @@ export default function (WrappedComponent) {
 
     render() {
       let { initialLanguage, initialI18nStore } = this.props
-      if (!process.browser) {
+      if (typeof window === 'undefined') {
         initialLanguage = i18n.language
         initialI18nStore = i18n.store.data
       }

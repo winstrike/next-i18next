@@ -9,6 +9,11 @@ const messageTypes = {
   info: 'info',
   warn: 'warn',
 }
+export enum ConsoleMessageTypes {
+  ERROR = 'error',
+  INFO = 'info',
+  WARN = 'warn'
+}
 
 Object.freeze(messageTypes)
 
@@ -18,7 +23,7 @@ Object.freeze(messageTypes)
  * @param {messageTypes} messageType One of: error, warn or info
  * @param {String} message
  */
-function logMessage(PrettyError, messageType, message) {
+function logMessage(PrettyError, messageType: ConsoleMessageTypes, message) {
   const capitalize = str => str.replace(str[0], str[0].toUpperCase())
 
   const pe = new PrettyError()
@@ -29,7 +34,7 @@ function logMessage(PrettyError, messageType, message) {
   // Set the new error message
   newLog.message = message
 
-  if (Object.values(messageTypes).includes(messageType)) {
+  if (Object['values'](messageTypes).includes(messageType)) {
     newLog.name = capitalize(messageTypes[messageType])
     console[messageType](pe.render(newLog))
   } else {
@@ -45,7 +50,7 @@ function logMessage(PrettyError, messageType, message) {
  * @param {String} message
  * @param {Object} options
  */
-export default function createConsoleLog(messageType, message) {
+export function consoleMessage(messageType: ConsoleMessageTypes, message) {
 
   const { errorStackTraceLimit, strictMode } = this.config
 
