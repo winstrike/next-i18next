@@ -65,7 +65,7 @@
     "next": "^7.0.2",
     "puppeteer": "^1.11.0",
     "react": "^16.8.0",
-    "react-dom": "^16.6.3"
+    "react-dom": "^16.8.0"
   },
   "dependencies": {
     "detect-node": "^2.0.4",
