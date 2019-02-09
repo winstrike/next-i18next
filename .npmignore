@@ -1,6 +1,6 @@
 # Untranspiled source and examples
 src
-example
+examples
 
 # Dependencies
 node_modules
@@ -25,3 +25,7 @@ jest.*
 
 # Misc
 .circleci
+.all-contributorsrc
+greenkeeper.json
+jest-puppeteer.config.js
+.github

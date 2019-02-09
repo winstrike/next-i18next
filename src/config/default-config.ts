@@ -20,8 +20,7 @@ export interface NextI18NextConfig {
 export const defaultConfig = <NextI18NextConfig> {
   defaultLanguage: DEFAULT_LANGUAGE,
   otherLanguages: OTHER_LANGUAGES,
-  fallbackLng: process.env.NODE_ENV === 'production' ? DEFAULT_LANGUAGE : null,
-  load: 'languageOnly',
+  load: 'currentOnly',
   localePath: LOCALE_PATH,
   localeStructure: LOCALE_STRUCTURE,
   localeSubpaths: LOCALE_SUBPATHS,

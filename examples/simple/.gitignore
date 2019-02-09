@@ -3,8 +3,6 @@ node_modules
 
 # Dist
 dist
-.next
-out
 
 # OS
 .DS_Store
@@ -13,10 +11,4 @@ out
 .vscode
 
 # Logs
-*.log
-
-# Testing
-coverage/
-
-# npm
-package-lock.json
+runtime.log

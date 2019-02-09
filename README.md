@@ -20,6 +20,8 @@ While `next-i18next` uses [i18next](https://www.i18next.com/) and [react-i18next
 yarn add next-i18next
 ```
 
+You need to also have `react` and `next` installed.
+
 ### 2. Translation content
 
 By default, `next-i18next` expects your translations to be organised as such:
@@ -33,7 +35,7 @@ By default, `next-i18next` expects your translations to be organised as such:
             └── common.json
 ```
 
-This structure can also be seen in the [example directory](./example).
+This structure can also be seen in the [simple example](./examples/simple).
 
 If you want to structure your translations/namespaces in a custom way, you will need to pass modified `localePath` and `localeStructure` values into the initialisation config.
 
@@ -44,18 +46,28 @@ The default export of `next-i18next` is a class constructor, into which you pass
 ```jsx
 import NextI18Next from 'next-i18next'
 
-const options = {}
-export default new NextI18Next(options)
+const NextI18NextInstance = new NextI18Next({
+  defaultLanguage: 'en',
+  otherLanguages: ['de']
+})
+
+export default NextI18NextInstance
+
+/* Optionally, export class methods as named exports */
+export const {
+  appWithTranslation,
+  withNamespaces,
+} = NextI18NextInstance
 ```
 
 [A full list of options can be seen here](#options).
 
-It's recommended to export this `NextI18Next` instance from a single file in your project, where you can continually import it from to use the class methods as needed. You can see this approach in the [example/i18n.js](./example/i18n.js) file.
+It's recommended to export this `NextI18Next` instance from a single file in your project, where you can continually import it from to use the class methods as needed. You can see this approach in the [examples/simple/i18n.js](./examples/simple/i18n.js) file.
 
 After creating and exporting your `NextI18Next` instance, you need to take the following steps to get things working:
 
-1. Create an `_app.js` file inside your `pages` directory, and wrap it with the `NextI18Next.appWithTranslation` higher order component (HOC). You can see this approach in the [example/pages/_app.js](./example/pages/_app.js). 
-2. Create a `server.js` file inside your root directory, initialise an [express](https://www.npmjs.com/package/express) server, and use the `nextI18NextMiddleware` middleware with your `nextI18Next` instance passed in. You can see this approach in the [example/server.js](./example/server.js). For more info, see [the NextJs section on custom servers](https://github.com/zeit/next.js#custom-server-and-routing).
+1. Create an `_app.js` file inside your `pages` directory, and wrap it with the `NextI18Next.appWithTranslation` higher order component (HOC). You can see this approach in the [examples/simple/pages/_app.js](./examples/simple/pages/_app.js). 
+2. Create a `server.js` file inside your root directory, initialise an [express](https://www.npmjs.com/package/express) server, and use the `nextI18NextMiddleware` middleware with your `nextI18Next` instance passed in. You can see this approach in the [examples/simple/server.js](./examples/simple/server.js). For more info, see [the NextJs section on custom servers](https://github.com/zeit/next.js#custom-server-and-routing).
 
 That's it! Your app is ready to go. You can now use the `NextI18Next.withNamespaces` HOC to make your components or pages translatable, based on namespaces:
 
@@ -80,7 +92,7 @@ export default withNamespaces('footer')(Footer)
 
 By default, `next-i18next` will send _all your namespaces_ down to the client on each initial request. This can be an appropriate approach for smaller apps with less content, but a lot of apps will benefit from splitting namespaces based on route.
 
-To do that, you need to return a `namespacesRequired` array via `getInitialProps` on your page-level component. You can see this approach in [example/pages/index.js](./example/pages/index.js).
+To do that, you need to return a `namespacesRequired` array via `getInitialProps` on your page-level component. You can see this approach in [examples/simple/pages/index.js](./examples/simple/pages/index.js).
 
 Note: `withNamespaces` provides namespaces to the component that it wraps. However, `namespacesRequired` provides the total available namespaces to the entire React tree and belongs on the page level. Both are required (although you can use `Trans` instead of `withNamespaces` if desired).
 
@@ -156,7 +168,7 @@ server.get('/products/:id', (req, res) => {
 | `defaultNS` | `'common'`  |
 | `defaultLanguage`  | `'en'`  |
 | `ignoreRoutes`  | `['/_next', '/static']`  |
-| `otherLanguages` | `[]`  |
+| `otherLanguages` (required) | `[]`  |
 | `localePath` | `'static/locales'`  |
 | `localeStructure` | `'{{lng}}/{{ns}}'`  |
 | `localeSubpaths` | `false`  |
