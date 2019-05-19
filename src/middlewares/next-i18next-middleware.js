@@ -1,4 +1,4 @@
-import i18nextMiddleware from 'i18next-express-middleware'
+import koaI18nextMiddleware from 'koa-i18next-middleware'
 import { parse } from 'url'
 import pathMatch from 'path-match'
 
@@ -23,24 +23,28 @@ export default function (nexti18next) {
   // we need to manually set the language for
   // each request
   if (!config.serverLanguageDetection) {
-    middleware.push((req, res, next) => {
+    middleware.push(async ({ request: req }, next) => {
       if (isI18nRoute(req.url)) {
         req.lng = config.defaultLanguage
       }
-      next()
+      await next()
     })
   }
 
-  middleware.push(i18nextMiddleware.handle(i18n, { ignoreRoutes }))
+  middleware.push(koaI18nextMiddleware.getHandler(i18n, {
+    ignoreRoutes,
+    locals: 'req',
+  }))
 
   if (localeSubpaths !== localeSubpathOptions.NONE) {
     middleware.push(
-      (req, res, next) => {
+      async ({ request: req, response: res }, next) => {
         if (isI18nRoute(req.url)) {
           const { pathname } = parse(req.url)
 
           if (allLanguages.some(lng => pathname === `/${lng}`)) {
-            return forceTrailingSlash(req, res, pathname.slice(1))
+            forceTrailingSlash(req, res, pathname.slice(1))
+            return
           }
 
           lngPathDetector(req, res)
@@ -53,8 +57,7 @@ export default function (nexti18next) {
             req.url = req.url.replace(`/${lng}`, '')
           }
         }
-
-        return next()
+        await next()
       },
     )
   }

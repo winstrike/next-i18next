@@ -26,7 +26,7 @@ describe('forceTrailingSlash utility function', () => {
 
     res = {
       redirect: jest.fn(),
-      header: jest.fn(),
+      set: jest.fn(),
     }
   })
 

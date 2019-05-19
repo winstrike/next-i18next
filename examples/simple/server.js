@@ -1,8 +1,9 @@
-const express = require('express')
+const Koa = require('koa')
+const Router = require('koa-router')
 const next = require('next')
 const nextI18NextMiddleware = require('next-i18next/middleware')
 
-const nextI18next = require('./i18n')
+const nextI18Next = require('./i18n')
 
 const port = process.env.PORT || 3000
 const app = next({ dev: process.env.NODE_ENV !== 'production' })
@@ -10,12 +11,19 @@ const handle = app.getRequestHandler();
 
 (async () => {
   await app.prepare()
-  const server = express()
 
-  server.use(nextI18NextMiddleware(nextI18next))
+  const server = new Koa()
+  const router = new Router()
 
-  server.get('*', (req, res) => handle(req, res))
+  nextI18NextMiddleware(nextI18Next).forEach((middleware) => {
+    server.use(middleware)
+  })
 
-  await server.listen(port)
-  console.log(`> Ready on http://localhost:${port}`) // eslint-disable-line no-console
+  server.use(router.routes())
+
+  router.get('*', ctx => handle(ctx.req, ctx.res))
+
+  server.listen(port, () => {
+    console.log(`> Ready on http://localhost:${port}`) // eslint-disable-line no-console
+  })
 })()

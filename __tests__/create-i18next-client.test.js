@@ -3,14 +3,14 @@ import i18next from 'i18next'
 import I18nextBrowserLanguageDetector from 'i18next-browser-languagedetector'
 import createI18nextClient from '../src/create-i18next-client'
 
-const i18nextMiddleware = require('i18next-express-middleware')
+const i18nextMiddleware = require('koa-i18next-middleware')
 
 jest.mock('i18next', () => ({
   init: jest.fn(),
   use: jest.fn(),
 }))
 
-jest.mock('i18next-express-middleware', () => ({
+jest.mock('koa-i18next-middleware', () => ({
   LanguageDetector: jest.fn(),
 }))
 
