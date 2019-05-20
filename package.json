@@ -20,7 +20,8 @@
     "translation",
     "localisation",
     "localization",
-    "locale"
+    "locale",
+    "next-i18next"
   ],
   "scripts": {
     "lint": "eslint src examples __tests__",
@@ -35,6 +36,11 @@
     "run-example": "npm run build && cd examples/simple && rm -rf node_modules && npm i && npm run dev",
     "run-example:prod": "npm run build && cd examples/simple && rm -rf node_modules && npm i && npm run build && npm start",
     "test": "npm run build && npm run build:examples/simple && NODE_ENV=test jest --maxWorkers=1 --silent && npm run remove:examples/simple"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && npm test"
+    }
   },
   "devDependencies": {
     "@babel/cli": "^7.1.5",
