@@ -1,8 +1,7 @@
 # next-i18next-koa
-[![npm version](https://badge.fury.io/js/next-i18next-koa.svg)](https://badge.fury.io/js/next-i18next-koa)
-[![Package Quality](https://npm.packagequality.com/shield/next-i18next-koa.svg)](https://packagequality.com/#?package=next-i18next-koa)
+[![npm version](https://badge.fury.io/js/%40winstrike%2Fnext-i18next-koa.svg)](https://badge.fury.io/for/js/@winstrike/next-i18next-koa)
 
-**The easiest way to translate your NextJs apps. With Koa support only. Forked from ['next-i18next'](https://github.com/isaachinman/next-i18next/).**
+**The easiest way to translate your NextJs apps. With Koa support only. Forked from [`next-i18next`](https://github.com/isaachinman/next-i18next/).**
 
 ## What is this?
 
