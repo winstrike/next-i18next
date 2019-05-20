@@ -17,7 +17,7 @@ While `next-i18next` uses [i18next](https://www.i18next.com/) and [react-i18next
 ### 1. Installation
 
 ```jsx
-yarn add next-i18next
+npm i next-i18next
 ```
 
 You need to also have `react` and `next` installed.

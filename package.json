@@ -28,19 +28,20 @@
     "clean": "rm -rf dist && mkdir dist",
     "build:es": "BABEL_ENV=es babel src --out-dir dist/es",
     "build:cjs": "BABEL_ENV=cjs babel src --out-dir dist/commonjs",
-    "build": "yarn clean && yarn build:cjs && yarn build:es",
-    "build:examples/simple": "yarn link && cd examples/simple && yarn && yarn link next-i18next && yarn build",
-    "prepare": "yarn build",
-    "run-example": "yarn build && cd examples/simple && rm -rf node_modules && yarn && yarn dev",
-    "run-example:prod": "yarn build && cd examples/simple && rm -rf node_modules && yarn && yarn build && yarn start",
-    "test": "yarn build && yarn build:examples/simple && NODE_ENV=test jest --maxWorkers=1 --silent",
+    "build": "npm run clean && npm run build:cjs && npm run build:es",
+    "build:examples/simple": "npm link && cd examples/simple && npm i && npm link next-i18next && npm run build",
+    "remove:examples/simple": "rm -rf examples/simple/package-lock.json",
+    "prepare": "npm run build",
+    "run-example": "npm run build && cd examples/simple && rm -rf node_modules && npm i && npm run dev",
+    "run-example:prod": "npm run build && cd examples/simple && rm -rf node_modules && npm i && npm run build && npm start",
+    "test": "npm run build && npm run build:examples/simple && NODE_ENV=test jest --maxWorkers=1 --silent && npm run remove:examples/simple",
     "contributors:check": "all-contributors check",
     "contributors:add": "all-contributors add",
     "contributors:generate": "all-contributors generate"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn lint && yarn test"
+      "pre-commit": "npm run lint && npm test"
     }
   },
   "devDependencies": {
@@ -83,7 +84,7 @@
     "i18next-browser-languagedetector": "^3.0.0",
     "i18next-node-fs-backend": "^2.1.0",
     "i18next-xhr-backend": "^2.0.0",
-    "koa-i18next-middleware": "github:Janealter/koa-i18next-middleware#patch-1",
+    "koa-i18next-middleware": "janealter/koa-i18next-middleware#patch-1",
     "path-match": "^1.2.4",
     "prop-types": "^15.6.2",
     "react-i18next": "9.0.10",
