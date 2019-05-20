@@ -81,7 +81,7 @@
     "i18next-browser-languagedetector": "^3.0.0",
     "i18next-node-fs-backend": "^2.1.0",
     "i18next-xhr-backend": "^2.0.0",
-    "koa-i18next-middleware": "janealter/koa-i18next-middleware#patch-1",
+    "koa-i18next-middleware-fixed": "^1.1.10-b2",
     "path-match": "^1.2.4",
     "prop-types": "^15.6.2",
     "react-i18next": "9.0.10",

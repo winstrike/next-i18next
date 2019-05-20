@@ -5,7 +5,7 @@
 
 ## What is this?
 
-`next-i18next-koa` is a fork of [`next-i18next`](https://github.com/isaachinman/next-i18next/) with Koa server support only. This fork uses [`koa-i18next-middleware`](https://github.com/lxzxl/koa-i18next-middleware) instead of [`i18next-express-middleware`](https://github.com/i18next/i18next-express-middleware).
+`next-i18next-koa` is a fork of [`next-i18next`](https://github.com/isaachinman/next-i18next/) with Koa server support only. This fork uses [`koa-i18next-middleware-fixed`](https://github.com/janealter/koa-i18next-middleware-fixed) instead of [`i18next-express-middleware`](https://github.com/i18next/i18next-express-middleware).
 
 ## Project setup (server.js)
 

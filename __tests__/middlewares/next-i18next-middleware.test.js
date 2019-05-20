@@ -1,13 +1,13 @@
 /* eslint-env jest */
 
-import i18nextMiddleware from 'koa-i18next-middleware'
+import i18nextMiddleware from 'koa-i18next-middleware-fixed'
 import { forceTrailingSlash, lngPathDetector } from '../../src/utils'
 import testI18NextConfig from '../test-i18next-config'
 
 import nextI18nextMiddleware from '../../src/middlewares/next-i18next-middleware'
 import { localeSubpathOptions } from '../../src/config/default-config'
 
-jest.mock('koa-i18next-middleware', () => ({
+jest.mock('koa-i18next-middleware-fixed', () => ({
   getHandler: jest.fn(() => jest.fn()),
 }))
 
