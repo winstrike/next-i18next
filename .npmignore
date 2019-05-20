@@ -24,6 +24,5 @@ coverage
 jest.*
 
 # Misc
-greenkeeper.json
 jest-puppeteer.config.js
 .github
