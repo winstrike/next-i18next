@@ -1,6 +1,6 @@
 {
   "name": "@winstrike/next-i18next-koa",
-  "version": "0.1.1b",
+  "version": "0.1.1c",
   "repository": "git@github.com:winstrike/next-i18next.git",
   "author": "Janealter <n.bakulin@winstrike.gg>",
   "main": "dist/commonjs/index.js",
@@ -32,7 +32,7 @@
     "build": "npm run clean && npm run build:cjs && npm run build:es",
     "build:examples/simple": "npm link && cd examples/simple && npm i && npm link next-i18next && npm run build",
     "remove:examples/simple": "rm -rf examples/simple/package-lock.json",
-    "prepare": "npm run build",
+    "prepublishOnly": "npm run build",
     "run-example": "npm run build && cd examples/simple && rm -rf node_modules && npm i && npm run dev",
     "run-example:prod": "npm run build && cd examples/simple && rm -rf node_modules && npm i && npm run build && npm start",
     "test": "npm run build && npm run build:examples/simple && NODE_ENV=test jest --maxWorkers=1 --silent && npm run remove:examples/simple"
@@ -81,7 +81,7 @@
     "i18next-browser-languagedetector": "^3.0.0",
     "i18next-node-fs-backend": "^2.1.0",
     "i18next-xhr-backend": "^2.0.0",
-    "koa-i18next-middleware-fixed": "^1.1.10-b2",
+    "koa-i18next-middleware-fixed": "^1.1.10-b3",
     "path-match": "^1.2.4",
     "prop-types": "^15.6.2",
     "react-i18next": "9.0.10",
