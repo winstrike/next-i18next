@@ -1,5 +1,5 @@
 {
-  "name": "next-i18next-koa",
+  "name": "@winstrike/next-i18next-koa",
   "version": "0.1.0",
   "repository": "git@github.com:winstrike/next-i18next.git",
   "author": "Janealter <n.bakulin@winstrike.gg>",
@@ -35,11 +35,6 @@
     "run-example": "npm run build && cd examples/simple && rm -rf node_modules && npm i && npm run dev",
     "run-example:prod": "npm run build && cd examples/simple && rm -rf node_modules && npm i && npm run build && npm start",
     "test": "npm run build && npm run build:examples/simple && NODE_ENV=test jest --maxWorkers=1 --silent && npm run remove:examples/simple"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint && npm test"
-    }
   },
   "devDependencies": {
     "@babel/cli": "^7.1.5",
@@ -88,5 +83,9 @@
   },
   "peerDependencies": {
     "react": ">= 16.3.0"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/winstrike/next-i18next-koa/issues"
+  },
+  "homepage": "https://github.com/winstrike/next-i18next-koa#readme"
 }
