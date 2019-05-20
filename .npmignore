@@ -24,8 +24,6 @@ coverage
 jest.*
 
 # Misc
-.circleci
-.all-contributorsrc
 greenkeeper.json
 jest-puppeteer.config.js
 .github

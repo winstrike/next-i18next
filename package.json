@@ -34,10 +34,7 @@
     "prepare": "npm run build",
     "run-example": "npm run build && cd examples/simple && rm -rf node_modules && npm i && npm run dev",
     "run-example:prod": "npm run build && cd examples/simple && rm -rf node_modules && npm i && npm run build && npm start",
-    "test": "npm run build && npm run build:examples/simple && NODE_ENV=test jest --maxWorkers=1 --silent && npm run remove:examples/simple",
-    "contributors:check": "all-contributors check",
-    "contributors:add": "all-contributors add",
-    "contributors:generate": "all-contributors generate"
+    "test": "npm run build && npm run build:examples/simple && NODE_ENV=test jest --maxWorkers=1 --silent && npm run remove:examples/simple"
   },
   "husky": {
     "hooks": {
@@ -53,7 +50,6 @@
     "@types/next": "^8.0.1",
     "@types/react": "^16.8.4",
     "@types/react-dom": "^16.8.2",
-    "all-contributors-cli": "^6.0.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^24.1.0",
     "babel-plugin-add-module-exports": "^1.0.0",
