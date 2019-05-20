@@ -1,8 +1,8 @@
 {
-  "name": "next-i18next",
-  "version": "0.40.0",
-  "repository": "git@github.com:isaachinman/next-i18next.git",
-  "author": "Isaac Hinman <isaac@isaachinman.com>",
+  "name": "next-i18next-koa",
+  "version": "0.1.0",
+  "repository": "git@github.com:winstrike/next-i18next.git",
+  "author": "Janealter <n.bakulin@winstrike.gg>",
   "main": "dist/commonjs/index.js",
   "jsnext:main": "dist/es/index.js",
   "module": "dist/es/index.js",
@@ -11,7 +11,7 @@
   "engines": {
     "node": ">=8"
   },
-  "description": "The easiest way to translate your NextJs apps.",
+  "description": "The easiest way to translate your NextJs apps. With Koa support only. Forked from 'next-i18next'.",
   "keywords": [
     "react",
     "i18next",
