@@ -1,5 +1,5 @@
 # next-i18next-koa
-[![npm version](https://badge.fury.io/js/%40winstrike%2Fnext-i18next-koa.svg)](https://badge.fury.io/for/js/@winstrike/next-i18next-koa)
+[![npm version](https://badge.fury.io/js/%40winstrike%2Fnext-i18next-koa.svg)](https://www.npmjs.com/package/@winstrike/next-i18next-koa)
 
 **The easiest way to translate your NextJs apps. With Koa support only. Forked from [`next-i18next`](https://github.com/isaachinman/next-i18next/).**
 
@@ -17,7 +17,7 @@ const Router = require("koa-router");
 const serve = require("koa-static");
 const mount = require("koa-mount");
 const nextApp = require("next");
-const nextI18NextMiddleware = require("next-i18next/middleware");
+const nextI18NextMiddleware = require("@winstrike/next-i18next-koa/middleware");
 
 const nextI18Next = require("./lib/i18n");
 
