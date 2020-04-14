@@ -1,7 +1,7 @@
 {
   "name": "@winstrike/next-i18next-koa",
   "version": "0.1.14",
-  "repository": "git@github.com:winstrike/next-i18next.git",
+  "repository": "git://github.com/winstrike/next-i18next-koa.git",
   "author": "Janealter <n.bakulin@winstrike.gg>",
   "main": "dist/commonjs/index.js",
   "jsnext:main": "dist/es/index.js",
@@ -93,6 +93,9 @@
   },
   "bugs": {
     "url": "https://github.com/winstrike/next-i18next-koa/issues"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/winstrike"
   },
   "homepage": "https://github.com/winstrike/next-i18next-koa#readme"
 }
